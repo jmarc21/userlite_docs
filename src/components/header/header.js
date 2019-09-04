@@ -17,7 +17,11 @@ class Header extends Component {
             if (!e.includes('/')) {
                 link = '/' + e;
             }
-            return <NavLink exact to={link} activeClassName='header-active' style={{textDecoration: 'none', color: 'black'}} key={i} className="header-menu-links">{header_tabs[e].title}</NavLink>
+            if (header_tabs[e].heading) {
+                return <div key={i} className="header-menu-links header-menu-headings">{'<' + header_tabs[e].title + '/>'}</div>
+            }else{
+                return <NavLink exact to={link} activeClassName='header-active' style={{textDecoration: 'none', color: 'black'}} key={i} className="header-menu-links">{header_tabs[e].title}</NavLink>
+            }
         })
 
         return (
